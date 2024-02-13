@@ -7,9 +7,11 @@ class server {
     constructor() {
         this.app = express();
         this.port = process.env.PORT;
+        this.alumnoPath = '/api/alumnos';
 
         this.conectarDB();
         this.middlewares();
+        this.routers();
     }
 
     async conectarDB() {
@@ -22,11 +24,14 @@ class server {
         this.app.use(express.json());
     }
 
+    routers(){
+        this.app.use(this.alumnoPath, require('../routers/user.routes'))
+    }
+
     listen() {
         this.app.listen(this.port, () => {
             console.log('Servidor ejecutandoce y escuchado el puerto', this.port);
         });
-
     }
 }
 
