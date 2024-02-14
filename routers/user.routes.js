@@ -1,8 +1,7 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 
-const { alumnoPost } = require('../controllers/Alum.controller');
-
+const { usuarioPost } = require('../controllers/user.controller');
 const { validarCampos } = require('../middlewares/validar-campos');
 
 const router = Router();
@@ -16,4 +15,6 @@ router.post(
         /*check("correo").custom(validar ),
         check("role").custom(Validar role ),*/
         validarCampos,
-    ], alumnoPost);
+    ], usuarioPost);
+
+    module.exports = router;

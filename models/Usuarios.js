@@ -29,4 +29,10 @@ const alumnoSchema = Schema({
     }
 });
 
+    alumnoSchema.methods.toJSON = function(){
+        const {__V, password, _id, ...Alumno} = this.toObject();
+        Alumno.uid = _id;
+        return Alumno;
+    }
+
 module.exports = model('Alumno', alumnoSchema)

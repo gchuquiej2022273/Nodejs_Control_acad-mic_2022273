@@ -1,8 +1,8 @@
 const bcryptjs = require('bcryptjs');
-const Alumno = require('../models/Alumno');
+const Alumno = require('../models/Usuarios');
 const { response } = require('express');
 
-const alumnoPost = async(req, res) =>{
+    const usuarioPost = async(req, res) =>{
     const { nombre, correo, password, role } = req.body;
     const alumno = new Alumno({nombre, correo,password, role});
 
@@ -16,5 +16,5 @@ const alumnoPost = async(req, res) =>{
 }
 
 module.exports = {
-    alumnoPost
+    usuarioPost
 }
