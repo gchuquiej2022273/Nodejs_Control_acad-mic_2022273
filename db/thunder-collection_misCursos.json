@@ -1,0 +1,66 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "misCursos",
+    "dateExported": "2024-02-19T03:36:09.561Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "9f6d3703-3a15-4ed3-b4e6-fb05b47c4494",
+            "colId": "99202fa6-076e-4baf-92b6-65729b74e222",
+            "containerId": "",
+            "name": "createCursoPost",
+            "url": "http://localhost:3000/api/cursos",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-18T06:45:20.785Z",
+            "modified": "2024-02-19T00:51:57.290Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"JUGANDOLOL\",\n  \"profesor\": \"purple\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "55f5d16d-c1fd-4991-be83-650cd2fcc5a9",
+            "colId": "99202fa6-076e-4baf-92b6-65729b74e222",
+            "containerId": "",
+            "name": "joinPost",
+            "url": "http://localhost:3000/api/join",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-02-18T08:47:14.115Z",
+            "modified": "2024-02-19T00:56:34.061Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"JUGANDOLOL\",\n  \"estudiantes\": \"Brandon gomez\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "33cbd60a-69e2-4214-a9e7-3fac31a23bda",
+            "colId": "99202fa6-076e-4baf-92b6-65729b74e222",
+            "containerId": "",
+            "name": "DeleteCurso",
+            "url": "http://localhost:3000/api/cursos/id",
+            "method": "DELETE",
+            "sortNum": 30000,
+            "created": "2024-02-19T01:03:39.547Z",
+            "modified": "2024-02-19T01:44:32.850Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"_id\": \"65d2a62dfe2d910331d5865e\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
