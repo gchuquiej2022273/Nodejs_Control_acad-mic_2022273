@@ -1,20 +1,36 @@
 const bcryptjs = require('bcryptjs');
-const Alumno = require('../models/Usuarios');
-const { response } = require('express');
+const Usuario = require('../models/Usuarios');
 
-    const usuarioPost = async(req, res) =>{
+
+const usuarioPost = async (req, res) => {
+
     const { nombre, correo, password, role } = req.body;
-    const alumno = new Alumno({nombre, correo,password, role});
+
+    const usuario = new Usuario({ nombre, correo, password, role });
 
     const encrip = bcryptjs.genSaltSync();
-    alumno.password = bcryptjs.hashSync(password,encrip);
+    usuario.password = bcryptjs.hashSync(password, encrip);
 
-    await alumno.save();
+    await usuario.save();
     res.status(202).json({
         alumno
     });
 }
 
+const deletePerfil = async (req, res) => {
+    const {_id} = req.doby;
+    const usuario = await Usuario.findByIdAndUpdate(_id, {estado: false});
+    const autentificado = req.usuario;
+
+    res.status(200).json({
+        msg: "Usuario Eliminado",
+        usuario,
+        autentificado
+    });
+
+}
+
 module.exports = {
-    usuarioPost
+    usuarioPost,
+    deletePerfil
 }

@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const alumnoSchema = Schema({
+const usuarioSchema = Schema({
 
     nombre: {
         type: String,
@@ -25,14 +25,14 @@ const alumnoSchema = Schema({
     role: {
         type: String,
         required: true,
-        enum:['TEACHER_ROLE','STUDENT_ROLE']
+        enum:["TEACHER_ROLE","STUDENT_ROLE"]
     }
 });
 
-    alumnoSchema.methods.toJSON = function(){
-        const {__V, password, _id, ...Alumno} = this.toObject();
-        Alumno.uid = _id;
-        return Alumno;
+    usuarioSchema.methods.toJSON = function(){
+        const {__V, password, _id, ...Usuarios} = this.toObject();
+        Usuarios.uid = _id;
+        return Usuarios;
     }
 
-module.exports = model('Alumno', alumnoSchema)
+module.exports = model('Usuario', usuarioSchema)

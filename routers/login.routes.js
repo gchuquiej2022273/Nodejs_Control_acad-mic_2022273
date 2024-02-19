@@ -10,7 +10,7 @@ router.post(
     "/login",
     [
         check('correo', 'Este es un campo obligatorio').isEmail(),
-        check('password', 'La clave es obligatoria').isLength({min:6}),
+        check('password', 'La clave es obligatoria').not().isEmpty(),
         validarCampos
     ], login);
 
