@@ -7,10 +7,11 @@ class server {
     constructor() {
         this.app = express();
         this.port = process.env.PORT;
-        this.alumnoPath = '/api/usuarios';
+        this.TeacherPath = '/api/teacher';
         this.authPath = '/api/auth';
-        this.coursePath = '/api/cursos'
-        this.joinPath = '/api/join'
+        this.coursePath = '/api/cursos';
+        this.joinPath = '/api/join';
+        this.studentPath = '/api/student';
 
         this.conectarDB();
         this.middlewares();
@@ -31,7 +32,8 @@ class server {
         this.app.use(this.joinPath, require('../routers/join.routes'))
         this.app.use(this.coursePath, require('../routers/curso.routes'));
         this.app.use(this.authPath , require('../routers/login.routes'));
-        this.app.use(this.alumnoPath, require('../routers/user.routes'));
+        this.app.use(this.TeacherPath, require('../routers/Teacher.routes'));
+        this.app.use(this.studentPath, require('../routers/student.routes'));
     } 
 
     listen() {

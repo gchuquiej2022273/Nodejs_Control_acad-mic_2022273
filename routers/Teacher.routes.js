@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 
-const { usuarioPost , deletePerfil} = require('../controllers/user.controller');
+const { usuarioPost , deletePerfil} = require('../controllers/teacher.controller');
 const { validarCampos } = require('../middlewares/validar-campos');
 
 const { existenteEmail } = require('../helpers/db_validator'); 

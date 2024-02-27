@@ -1,34 +1,35 @@
 const Cursos = require('../models/cursos');
+const Student = require('../models/student');
 
-const joinPost = async(req, res) =>{
-    const { nombre, estudiantes } = req.body;
+const joinPost = async (req, res) => {
+    const { nombreCurso, correo } = req.body;
     try {
-        
-        const cursos = await Cursos.findOne({nombre});
+
+        const cursos = await Cursos.findOne({ nombreCurso });
 
         if (!cursos) {
             return res.status(400).json({
                 msg: "El curso no se encuentra"
-            });  
+            });
         }
 
-        if (cursos.estudiantes.includes(estudiantes)) {
+        if (cursos.correo.includes(correo)) {
             return res.status(400).json({
                 msg: "El estudiante ya se encuentra en esta asignatura"
-            });  
+            });
         }
 
-        cursos.estudiantes.push(estudiantes);
-        await cursos.save();
+        cursos.correo.push(correo);
 
+        await cursos.save();;
         res.status(200).json({
             msg: "Te uniste a una clase",
-            nombre,
+            cursos,
         });
 
     } catch (e) {
         res.status(500).json({
-            msg: `Error al unirse a un grupo ${nombre}`
+            msg: `Error al unirse a un grupo ${nombreCurso}`
         });
     }
 }

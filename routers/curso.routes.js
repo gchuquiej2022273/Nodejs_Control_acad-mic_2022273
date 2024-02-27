@@ -9,7 +9,7 @@ const router = Router();
 router.post(
     "/",
     [
-        check("nombre", "El nombre es obligatorio").not().isEmpty(),
+        check("nombreCurso", "El nombre es obligatorio").not().isEmpty(),
         check("profesor", "El profesor el obligatorio").not().isEmpty(),
         validarCampos,
     ], cursosPost);

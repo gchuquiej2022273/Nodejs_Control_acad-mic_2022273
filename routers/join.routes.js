@@ -3,15 +3,14 @@ const { check } = require('express-validator');
 
 const { joinPost } = require('../controllers/join.controller');
 const { validarCampos } = require('../middlewares/validar-campos');
-const { cursoDelete } = require('../controllers/courses.contoller');
 
 const router = Router();
 
 router.post(
     "/",
     [
-        check("nombre", "El uid no puede ir vacia").not().isEmpty(),
-        check("estudiantes", "El estudiante ir vacia").not().isEmpty(),
+        check("nombreCurso", "El curso no puede ir vacia").not().isEmpty(),
+        check("correo", "El correo es obligatorio").isEmail(),
         validarCampos,
     ], joinPost);
 

@@ -1,15 +1,32 @@
 const Cursos = require('../models/cursos');
+const Teacher = require('../models/teacher')
 
+const cursosPost = async (req, res) => {
 
-const cursosPost = async(req,res )=>{
-
-    const {nombre, profesor} = req.body;
+    const { nombreCurso, profesor } = req.body;
+    let nombre = profesor;
     try {
-        const cursos = new Cursos({nombre,profesor});
+        const cursos = new Cursos({ nombreCurso, profesor });
+        const teacher = await Teacher.findOne({ nombre });
 
+        if (!teacher) {
+            return res.status(400).json({
+                msg: "Accedo denegato, el profesor no existe"
+            });
+        }
+
+        if (teacher.myCursos.includes(nombreCurso)) {
+            return res.status(400).json({
+                msg: "EL curso ya esta agregado"
+            });
+        }
+
+        teacher.myCursos.push(nombreCurso);
         await cursos.save();
+        await teacher.save();
         res.status(202).json({
-            cursos
+            cursos,
+            teacher
         })
     } catch (e) {
         console.log(e);
@@ -20,9 +37,9 @@ const cursosPost = async(req,res )=>{
 
 }
 
-const cursoDelete = async(req, res) =>{
+const cursoDelete = async (req, res) => {
     const { _id } = req.body;
-    const cursos = await Cursos.findByIdAndUpdate(_id,{estado: false});
+    const cursos = await Cursos.findByIdAndUpdate(_id, { estado: false });
 
     res.status(200).json({
         cursos,

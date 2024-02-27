@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const usuarioSchema = Schema({
+const teacherSchema = Schema({
 
     nombre: {
         type: String,
@@ -22,17 +22,20 @@ const usuarioSchema = Schema({
         default: true
     },
 
+    myCursos: {
+        type: [String]
+    },
+    
     role: {
         type: String,
-        required: true,
-        enum:["TEACHER_ROLE","STUDENT_ROLE"]
+        default : "TEACHER_ROLE"
     }
 });
 
-    usuarioSchema.methods.toJSON = function(){
+/*     usuarioSchema.methods.toJSON = function(){
         const {__V, password, _id, ...Usuarios} = this.toObject();
         Usuarios.uid = _id;
         return Usuarios;
-    }
+    } */
 
-module.exports = model('Usuario', usuarioSchema)
+module.exports = model('Teacher', teacherSchema)

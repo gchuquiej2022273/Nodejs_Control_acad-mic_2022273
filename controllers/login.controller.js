@@ -1,47 +1,47 @@
-const {
-    request,
-    response
-} = require('express');
-const Usuario = require('../models/Usuarios');
+const { request, response } = require('express');
+const Teacher = require('../models/teacher');
+const Student = require('../models/student')
 const byCts = require('bcryptjs');
-const {
-    generarJWTN
-} = require('../helpers/generar_jwtn');
+const { generarJWTN } = require('../helpers/generar_jwtn');
 
 const login = async (req = request, res = response) => {
 
-    const {correo,password} = req.body;
-
+    const { correo, password } = req.body;
+    let emailStudent = correo;
     try {
-        const usuario = await Usuario.findOne({correo});
-
-        if (!usuario) {
+        const teacher = await Teacher.findOne({ correo });
+        const student = await Student.findOne({ emailStudent });
+        if (!teacher && !student) {
             return res.status(400).json({
                 msg: "Correo incorrecto, no existe en la base de datos"
             });
         }
 
-        if (!usuario.estado) {
+/*         if (!teacher.estado && !student.estado) {
             return res.status(400).json({
-                msg: "El usuario no existe en la base de datos"
+                msg: "usuario no existe en la base de datos"
             });
+        } */
+
+        let validarClave = false;
+        if (teacher) {
+            validarClave = byCts.compareSync(password, teacher.password);
+        } else if (student) {
+            validarClave = byCts.compareSync(password, student.password);
         }
 
-        const validarClave = byCts.compareSync(password, usuario.password);
         if (!validarClave) {
             return res.status(400).json({
                 msg: "La contraseña es incorrecta"
             });
         }
 
-            const token = await generarJWTN(usuario.id);
-            
+        const token = await generarJWTN(student ? student.id : teacher.id);
+
         res.status(200).json({
             msg: "Bienvenido",
-            usuario,
             token
         });
-
     } catch (e) {
         console.log(e);
         res.status(500).json({

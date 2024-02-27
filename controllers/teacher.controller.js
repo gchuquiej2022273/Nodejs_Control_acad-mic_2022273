@@ -1,24 +1,24 @@
 const bcryptjs = require('bcryptjs');
-const Usuario = require('../models/Usuarios');
+const Teacher = require('../models/teacher');
 
 
 const usuarioPost = async (req, res) => {
 
     const { nombre, correo, password, role } = req.body;
 
-    const usuario = new Usuario({ nombre, correo, password, role });
+    const teacher = new Teacher({ nombre, correo, password, role });
 
     const encrip = bcryptjs.genSaltSync();
-    usuario.password = bcryptjs.hashSync(password, encrip);
+    teacher.password = bcryptjs.hashSync(password, encrip);
 
-    await usuario.save();
+    await teacher.save();
     res.status(202).json({
-        alumno
+        teacher
     });
 }
 
 const deletePerfil = async (req, res) => {
-    const {_id} = req.doby;
+    const {_id} = req.doby;cls
     const usuario = await Usuario.findByIdAndUpdate(_id, {estado: false});
     const autentificado = req.usuario;
 
@@ -27,7 +27,6 @@ const deletePerfil = async (req, res) => {
         usuario,
         autentificado
     });
-
 }
 
 module.exports = {

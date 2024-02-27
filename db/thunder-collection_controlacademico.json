@@ -1,0 +1,178 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "controlacademico",
+    "dateExported": "2024-02-27T23:27:30.218Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "1c4906a4-593f-426a-8d49-beac9b5f036e",
+            "name": "registro",
+            "containerId": "",
+            "created": "2024-02-27T20:15:11.273Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "af4a566f-2094-43d1-9c11-47d2a9477248",
+            "name": "opcionesPerfil",
+            "containerId": "",
+            "created": "2024-02-27T20:15:46.505Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "a702932e-2916-4914-a9ca-a3472d3a4831",
+            "name": "myCursosTeacher",
+            "containerId": "",
+            "created": "2024-02-27T20:16:19.912Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "68258fa7-0acc-45a2-b417-159664b80807",
+            "name": "myCursosStudent",
+            "containerId": "",
+            "created": "2024-02-27T20:16:34.679Z",
+            "sortNum": 40000
+        },
+        {
+            "_id": "0f676239-d7a5-4e4b-a498-06459262d887",
+            "name": "login",
+            "containerId": "",
+            "created": "2024-02-27T20:16:47.471Z",
+            "sortNum": 50000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "44726408-f61e-4222-8047-0d3c1aa55b40",
+            "colId": "0e903eb1-d5b5-44fd-9f54-72c3dadb6bab",
+            "containerId": "1c4906a4-593f-426a-8d49-beac9b5f036e",
+            "name": "RegisterTeacher",
+            "url": "http://localhost:3000/api/teacher",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-27T20:15:17.953Z",
+            "modified": "2024-02-27T22:57:03.396Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"herlin gomez\",\n  \"correo\": \"hGomez@gmail.com\",\n  \"password\": \"12345678\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "cfde7987-2a9d-4c8d-ab20-88890532067c",
+            "colId": "0e903eb1-d5b5-44fd-9f54-72c3dadb6bab",
+            "containerId": "af4a566f-2094-43d1-9c11-47d2a9477248",
+            "name": "perfilDelete",
+            "url": "http://localhost:3000/api/usuarios/id",
+            "method": "DELETE",
+            "sortNum": 10000,
+            "created": "2024-02-27T20:15:48.912Z",
+            "modified": "2024-02-27T20:15:48.912Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"_id\": \"65d2c81baea6e71de52f32eb\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "de3c56dc-2ed5-4f63-ac28-850e32273f37",
+            "colId": "0e903eb1-d5b5-44fd-9f54-72c3dadb6bab",
+            "containerId": "0f676239-d7a5-4e4b-a498-06459262d887",
+            "name": "Login",
+            "url": "http://localhost:3000/api/auth/login",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-27T20:16:50.591Z",
+            "modified": "2024-02-27T21:39:40.304Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"correo\": \"xD3@gmail.com\",\n  \"password\": \"12345678\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "c1cb7613-5f22-4126-a8d4-db10b0010690",
+            "colId": "0e903eb1-d5b5-44fd-9f54-72c3dadb6bab",
+            "containerId": "a702932e-2916-4914-a9ca-a3472d3a4831",
+            "name": "createCursoPost",
+            "url": "http://localhost:3000/api/cursos",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-27T20:16:59.344Z",
+            "modified": "2024-02-27T23:10:11.747Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombreCurso\": \"Taller\",\n  \"profesor\": \"herlin gomez\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "723be404-4603-4b0e-bc23-7ebbc63d23be",
+            "colId": "0e903eb1-d5b5-44fd-9f54-72c3dadb6bab",
+            "containerId": "68258fa7-0acc-45a2-b417-159664b80807",
+            "name": "joinPost",
+            "url": "http://localhost:3000/api/join",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-02-27T20:17:02.841Z",
+            "modified": "2024-02-27T23:25:09.254Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombreCurso\": \"Taller\",\n  \"correo\": \"braulio@gmail.com\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "0293168c-4c29-49d9-858a-d011a2826255",
+            "colId": "0e903eb1-d5b5-44fd-9f54-72c3dadb6bab",
+            "containerId": "1c4906a4-593f-426a-8d49-beac9b5f036e",
+            "name": "registerStudent",
+            "url": "http://localhost:3000/api/student",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-02-27T20:15:19.249Z",
+            "modified": "2024-02-27T23:24:58.753Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nameStudent\": \"braulio\",\n  \"emailStudent\": \"braulio@gmail.com\",\n  \"password\": \"123456789\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "d7bb9f6c-7bc6-4569-ac09-f9a5d838dd8b",
+            "colId": "0e903eb1-d5b5-44fd-9f54-72c3dadb6bab",
+            "containerId": "a702932e-2916-4914-a9ca-a3472d3a4831",
+            "name": "DeleteCurso",
+            "url": "http://localhost:3000/api/cursos/id",
+            "method": "DELETE",
+            "sortNum": 20000,
+            "created": "2024-02-27T20:17:04.993Z",
+            "modified": "2024-02-27T20:17:04.993Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"_id\": \"65d2a62dfe2d910331d5865e\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
